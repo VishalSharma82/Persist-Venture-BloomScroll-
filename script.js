@@ -4,7 +4,7 @@ lottie.loadAnimation({
   renderer: "svg",
   loop: true,
   autoplay: true,
-  path: "https://assets10.lottiefiles.com/packages/lf20_qqt9mcld.json", // Replace with your JSON path
+  // path: "https://assets10.lottiefiles.com/packages/lf20_qqt9mcld.json",  Replace with your JSON path
 });
 
 document.querySelectorAll(".icon-item").forEach((item) => {
@@ -27,30 +27,6 @@ document
       cardImage.src = imageUrl;
     });
   });
-
-// Selectors for the slider functionality
-const customCardContainer = document.querySelector(
-  ".custom-hover-card-container"
-);
-const customPrevButton = document.querySelector(".custom-prev-btn");
-const customNextButton = document.querySelector(".custom-next-btn");
-
-// Scroll left when the previous button is clicked
-customPrevButton.addEventListener("click", () => {
-  customCardContainer.scrollBy({
-    left: -300, // Adjust scroll distance as needed
-    behavior: "smooth",
-  });
-});
-
-// Scroll right when the next button is clicked
-customNextButton.addEventListener("click", () => {
-  customCardContainer.scrollBy({
-    left: 300, // Adjust scroll distance as needed
-    behavior: "smooth",
-  });
-});
-
 
 //new
 
@@ -80,13 +56,13 @@ nextBtn.addEventListener('click', () => {
   const updateTimeline = () => {
     const scrollPercentage =
       window.scrollY / (document.body.scrollHeight - window.innerHeight);
-    const fillHeight = scrollPercentage * 150;
+    const fillHeight = scrollPercentage * 100;
 
     // Update timeline fill height
     timelineFill.style.height = `${fillHeight}%`;
 
     // Move the human along the line
-    const humanTop = Math.min(140, fillHeight); // Ensure it doesn't exceed the path
+    const humanTop = Math.min(80, fillHeight); // Ensure it doesn't exceed the path
     human.style.top = `${humanTop}%`;
 
     // Highlight points and update details
