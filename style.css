@@ -258,8 +258,6 @@ body {
   }
 }
 
-
-
 /* Slider Container */
 /* Slider Container */
 .custom-slider-container {
@@ -710,7 +708,6 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
   gap: 20px; /* Spacing between cards */
-
 }
 
 /* Individual Card */
