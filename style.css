@@ -1,4 +1,4 @@
-/* Global Styles */
+
 body {
   margin: 0;
   padding: 0;
@@ -8,12 +8,31 @@ body {
   overflow-x: hidden; /* Prevent horizontal scrolling */
   background-color: #000; /* Global dark background */
 }
+html,body{
+  width:100%;
+  /* height:100%; */
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+
+/* Make sure .container doesn't exceed the viewport */
+.container {
+  width: 100%;
+  max-width: 100%; /* Prevent overflow */
+  margin: 0 auto;
+  padding: 20px;
+  right:0;
+  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
 
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  right:0;
+
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -29,14 +48,15 @@ p {
 .custom-header {
   position: fixed;
   top: 0;
-  width: 98%;
-  background: rgba(255, 255, 255, 0.9);
+  left:0;
+  right:0;
+  background: #ffffff;
   z-index: 1000;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 10px 10px;
 }
 
 .logo {
@@ -120,10 +140,10 @@ p {
   }
 }
 
-
 /* Main Content */
 .main-content {
   text-align: center;
+  right:0;
   padding: 80px 20px 20px; /* Leave space for the fixed header */
 }
 
@@ -159,7 +179,6 @@ p {
     font-size: 0.9rem;
   }
 }
-
 
 /* Interactive Card */
 .interactive-card {
@@ -240,7 +259,6 @@ p {
   }
 }
 
-
 /* Circular Images */
 .circular-images {
   display: flex;
@@ -317,6 +335,7 @@ p {
 
 /* Slider Container */
 .custom-slider-container {
+  right:0;
   position: relative;
   display: flex;
   align-items: center;
@@ -431,7 +450,8 @@ p {
 
 
 /* Timeline */
-.timeline-container {
+  .timeline-container {
+  right:0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -475,6 +495,7 @@ p {
 
 /* Human Animation */
 .human {
+  right:0;
   position: absolute;
   left: -15px;
   top: 0;
@@ -521,6 +542,7 @@ p {
 
 /* Section 5 */
 #section5 {
+  right:0;
   color: rgb(255, 255, 255);
   background: rgb(0, 0, 0);
 }
@@ -574,6 +596,7 @@ p {
 /* Content */
 .content {
   text-align: center;
+  right:0;
   max-width: 700px;
   margin: 100px auto 50px;
   padding: 0 20px;
@@ -633,7 +656,7 @@ p {
 @keyframes fadeIn{
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(25px);
   }
   to {
     opacity: 1;
@@ -750,12 +773,14 @@ footer {
 }
 
 /* Individual Card */
+
 .card {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: #fff; /* Card background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  overflow: hidden; /* Ensure content stays inside */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
+  position: relative;
 }
 
 .card img {
@@ -781,9 +806,42 @@ footer {
 
 /* Hover Effect */
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(255, 0, 0, 0.2);
+  transform: translateY(-10px) scale(1.05); /* Slight lift and zoom */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
 }
+
+/* Hover Animation - Shine Effect */
+.card::before{
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(45deg);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.card:hover::before{
+  opacity: 1;
+  animation: shine 1s infinite;
+}
+
+/* Keyframes for Shine Effect */
+@keyframes shine{
+  0% {
+    top: -100%;
+    left: -100%;
+  }
+  100% {
+    top: 200%;
+    left: 200%;
+  }
+}
+
 
 /* Responsive Design - Cards */
 @media (max-width: 992px){
@@ -831,4 +889,91 @@ footer {
   transform: translateY(-50%);
   font-size: 4em;
   color: white;
+}
+
+@media (max-width: 600px){
+  /* Reduce bloomscroll size and center-align */
+  #text{
+    padding:90px 150px 0px 0px;
+    font-size: 3.5rem; /* Smaller font size for bloomscroll */
+    text-align: center; /* Center-align bloomscroll */
+  }
+
+  /* Adjust homepage section height */
+  .homepage {
+    height: 100vh; /* Reduce the height slightly */
+  }
+
+  /* Add margin to card-container */
+  .card-container {
+    margin: 20px 10px; /* Add a smaller margin for better spacing */
+  }
+
+  /* Add margin to Section 5 */
+  #section5 {
+    padding: 20px 15px; /* Add padding to make the section more spacious */
+  }
+
+  /* Adjust card styles in card-container for smaller screens */
+  .card-container .card {
+    margin-bottom: 15px; /* Add some spacing between cards */
+  }
+}
+
+@media (max-width: 600px){
+  .profile-item {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between image and text */
+    padding: 5px 0;
+  }
+
+  .profile-item img {
+    width: 50px; /* Smaller size for images */
+    height: 50px;
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover;
+  }
+
+  .profile-info {
+    text-align: left; /* Align the text to the left */
+  }
+
+  .profile-info h4 {
+    font-size: 1rem;
+    margin: 0;
+    color: #ffffff;
+  }
+
+  .profile-info p {
+    font-size: 0.9rem;
+    margin: 5px 0 0;
+    color: rgba(241, 199, 150, 0.9);
+  }
+}
+@media (max-width: 500px){
+  .profile-item {
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .profile-item img {
+    margin-bottom: 5px; /* Add spacing below the image */
+  }
+
+  .profile-info {
+    text-align: left; /* Keep the text aligned left */
+  }
+  .profile-info h4 {
+    font-size: 1rem;
+    margin: 0;
+    color: #ffffff;
+  }
+
+  .profile-info p {
+    font-size: 0.9rem;
+    margin: 5px 0 0;
+    color: rgba(241, 199, 150, 0.9);
+  }
 }
